@@ -62,15 +62,13 @@ export default class NotificationScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
-          Android Pay Example
+          Notifications Example
         </Text>
-        <Text style={styles.instruction}>
-          Click button to init crash.
-        </Text>
+        <View style={styles.bottomButton}>
         <Button
-          onPress={this.handleCrashPress}
-          title="Crash"
+          title="Send Message"
         />
+        </View>
       </View>
     )
   }
@@ -92,12 +90,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+    marginTop: 10,
   },
   button: {
-    margin: 10,
-    borderWidth: 1,
+    margin: 20,
   },
   token: {
     height: 20,
+  },
+  bottomButton: {
+    bottom: 10
+  },
+  buttonContainer: {
+    margin: 10
   },
 })
