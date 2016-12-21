@@ -12,6 +12,7 @@ export default class CrashScreen extends Component {
   handleCrashPress = () => {
        console.log('handleCrashPress')
        //TODO: need crash
+       FirebaseCrash.undifinedFunction()
   }
 
   handleReportPress = () => {
@@ -35,7 +36,7 @@ export default class CrashScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.header}>
-          Android Pay Example
+          Crash report example
         </Text>
         <Text style={styles.instruction}>
           Click button to init crash.
@@ -44,6 +45,32 @@ export default class CrashScreen extends Component {
           onPress={this.handleCrashPress}
           title="Crash"
         />
+        <Text style={styles.instruction}>
+          Or use other options.
+        </Text>
+        <View style={styles.buttonRow}>
+        <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          onPress={this.handleReportPress}
+          title="report"
+        />
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          onPress={this.handleLogPress}
+          title="log"
+        />
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          onPress={this.handleLogcatPress}
+          title="logcat"
+        />
+        </View>
+        </View>
       </View>
     )
   }
@@ -65,12 +92,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+    marginTop: 10,
   },
   button: {
-    margin: 10,
-    borderWidth: 1,
+    margin: 20,
   },
   token: {
     height: 20,
+  },
+  buttonRow: {
+    flexDirection: 'row'
+  },
+  buttonContainer: {
+    margin: 10
   },
 })
