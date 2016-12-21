@@ -11,43 +11,102 @@ import {
   Text,
   View
 } from 'react-native';
+import { TabViewAnimated, TabBarTop } from 'react-native-tab-view'
+import CrashScreen from './components/CrashScreen'
+import AnalyticsScreen from './components/AnalyticsScreen'
+import NotificationScreen from './components/NotificationScreen'
 
 export default class FirebaseTest extends Component {
+  state = {
+    index: 0,
+    routes: [
+      { key: '1', title: 'Crash' },
+      { key: '2', title: 'Analytics' },
+      { key: '3', title: 'Notifications' },
+    ],
+  };
+
+  handleChangeTab = (index) => {
+    this.setState({ index })
+  }
+
+  renderHeader = props => (
+    <TabBarTop
+      {...props}
+      indicatorStyle={styles.indicator}
+      style={styles.tabbar}
+      tabWidth={10}
+      renderLabel={this.renderLabel}
+    />
+  )
+
+  renderLabel = ({ route, index }) => (
+    <Text
+      accessible
+      accessibilityLabel={`headerTab_${index}`}
+      style={[styles.label]}>
+      {route.title.toUpperCase()}
+    </Text>
+  )
+
+  renderScene = ({ route }) => {
+    switch (route.key) {
+    case '1':
+      return <CrashScreen />
+    case '2':
+      return <AnalyticsScreen />
+    case '3':
+      return <NotificationScreen />
+    default:
+      return null
+    }
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <View style={styles.statusbar} />
+        <TabViewAnimated
+          style={styles.tabsContainer}
+          navigationState={this.state}
+          renderScene={this.renderScene}
+          renderHeader={this.renderHeader}
+          onRequestChangeTab={this.handleChangeTab}
+        />
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#f5f5f5',
+  },
+  statusbar: {
+    height: 0,
+  },
+  tabsContainer: {
+    flex: 1,
+  },
+  tabbar: {
+    height: 48,
+    backgroundColor: '#fff',
+  },
+  page: {
+    flex: 1,
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    justifyContent: 'center',
   },
-  welcome: {
-    fontSize: 20,
+  indicator: {
+    backgroundColor: '#000',
+  },
+  label: {
+    color: '#000',
+    fontSize: 10,
+    fontWeight: '600',
     textAlign: 'center',
-    margin: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+})
 
 AppRegistry.registerComponent('FirebaseTest', () => FirebaseTest);

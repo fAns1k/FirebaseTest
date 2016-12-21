@@ -9,6 +9,8 @@
   "dependencies": {
     "react": "15.4.1",
     "react-native": "0.39.2",
+    "react-native-tab-view": "0.0.37",
+    "react-addons-shallow-compare": "15.4.1",
     "react-native-firebase-analytics": "^1.0.6",
     "react-native-firebase-crash-report": "^1.1.1"
   },
