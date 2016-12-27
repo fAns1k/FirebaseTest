@@ -83,13 +83,13 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.firebasetest"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         ndk {
@@ -126,13 +126,16 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-push-notification')
     compile project(':react-native-firebase-crash-report')
     compile project(':react-native-firebase-analytics')
     compile fileTree(dir: "libs", include: ["*.jar"])
-    // From node_modules
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.facebook.react:react-native:+'
     compile 'com.google.firebase:firebase-crash:10.0.1'
+    compile ('com.google.android.gms:play-services-gcm:10.0.1') {
+        force = true;
+    }
 }
 
 // Run this once to be able to run the application with BUCK

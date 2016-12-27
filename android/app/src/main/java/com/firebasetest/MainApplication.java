@@ -5,6 +5,7 @@ import android.util.Log;
 
 import com.evollu.react.fa.FIRAnalyticsPackage;
 import com.facebook.react.ReactApplication;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
             return Arrays.<ReactPackage>asList(
                     new MainReactPackage(),
+                    new ReactNativePushNotificationPackage(),
                     new RNFirebaseCrashReportPackage(),
                     new FIRAnalyticsPackage()
             );
