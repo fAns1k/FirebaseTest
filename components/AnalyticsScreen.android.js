@@ -65,11 +65,11 @@ export default class AnalyticsScreen extends Component {
           />
         </View>
         <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.sendUserId}
-          title="Send user id"
-        />
+          <Button
+            style={styles.button}
+            onPress={this.sendUserId}
+            title="Send user id"
+          />
         </View>
         <View style={styles.inputContainer}>
           <TextInput
@@ -84,18 +84,18 @@ export default class AnalyticsScreen extends Component {
           />
         </View>
         <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.sendUserProperty}
-          title="Send user property"
-        />
+          <Button
+            style={styles.button}
+            onPress={this.sendUserProperty}
+            title="Send user property"
+          />
         </View>
         <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.sendCustomEvent}
-          title="Send custom event"
-        />
+          <Button
+            style={styles.button}
+            onPress={this.sendCustomEvent}
+            title="Send custom event"
+          />
         </View>
       </View>
     )
@@ -109,16 +109,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  header: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instruction: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
   button: {
     marginBottom: 20,

@@ -43,27 +43,27 @@ export default class CrashScreen extends Component {
           Or use other options.
         </Text>
         <View style={styles.buttonRow}>
-        <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.handleReportPress}
-          title="report"
-        />
-        </View>
-        <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.handleLogPress}
-          title="log"
-        />
-        </View>
-        <View style={styles.buttonContainer}>
-        <Button
-          style={styles.button}
-          onPress={this.handleLogcatPress}
-          title="logcat"
-        />
-        </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              style={styles.button}
+              onPress={this.handleReportPress}
+              title="report"
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              style={styles.button}
+              onPress={this.handleLogPress}
+              title="log"
+            />
+          </View>
+          <View style={styles.buttonContainer}>
+            <Button
+              style={styles.button}
+              onPress={this.handleLogcatPress}
+              title="logcat"
+            />
+          </View>
         </View>
       </View>
     )
@@ -90,9 +90,6 @@ const styles = StyleSheet.create({
   },
   button: {
     margin: 20,
-  },
-  token: {
-    height: 20,
   },
   buttonRow: {
     flexDirection: 'row'

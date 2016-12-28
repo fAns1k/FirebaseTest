@@ -113,17 +113,8 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 5,
   },
-  button: {
-    margin: 20,
-  },
-  token: {
-    height: 20,
-  },
   bottomButton: {
     marginTop: 100,
     bottom: 10
-  },
-  buttonContainer: {
-    margin: 10
   },
 })
