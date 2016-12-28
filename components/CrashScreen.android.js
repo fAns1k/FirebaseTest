@@ -26,7 +26,6 @@ export default class CrashScreen extends Component {
   }
 
   render() {
-    const { loading, allowed, token } = this.state
 
     return (
       <View style={styles.container}>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
 
+import Analytics from 'react-native-firebase-analytics'
+
 export default class AnalyticsScreen extends Component {
   state = {
     user_id: '',
@@ -8,22 +10,26 @@ export default class AnalyticsScreen extends Component {
     property_value: '',
   }
 
-//  async componentDidMount() {
-//    const allowed = await stripe.deviceSupportsAndroidPay()
-//    this.setState({ allowed, loading: false })
-//  }
+  async componentDidMount() {
+    Analytics.setEnabled(true)
+  }
 
   sendUserId = async () => {
     console.log('sendUserId ' + this.state.user_id)
+    Analytics.setUserId(this.state.user_id)
   }
 
   sendUserProperty = async () => {
     console.log('sendUserProperty ' + this.state.property_value)
+    Analytics.setUserProperty(this.state.property_name, this.state.property_value)
   }
 
   sendCustomEvent = async () => {
     console.log('sendCustomEvent')
     console.log(this.state)
+    Analytics.logEvent('tipsi_event', {
+      'item_id': 'login'
+    });
   }
 
   handleChangeTextInUserId = (text) => {
