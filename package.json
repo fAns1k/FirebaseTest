@@ -10,9 +10,9 @@
     "react": "15.4.1",
     "react-addons-shallow-compare": "15.4.1",
     "react-native": "0.39.2",
+    "react-native-fcm": "^2.5.5",
     "react-native-firebase-analytics": "^1.0.6",
     "react-native-firebase-crash-report": "^1.1.1",
-    "react-native-push-notification": "^2.2.1",
     "react-native-tab-view": "0.0.37"
   },
   "devDependencies": {
