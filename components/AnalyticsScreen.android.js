@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, Button } from 'react-native'
+import { View, Text, StyleSheet, Button, TextInput } from 'react-native'
 
 export default class AnalyticsScreen extends Component {
   state = {
-    loading: true,
-    allowed: true,
-    token: null,
+    user_id: '',
+    property_name: '',
+    property_value: '',
   }
 
 //  async componentDidMount() {
@@ -13,64 +13,84 @@ export default class AnalyticsScreen extends Component {
 //    this.setState({ allowed, loading: false })
 //  }
 
-  handleCrashPress = async () => {
-       console.log('handleCrashPress')
-//    try {
-//      this.setState({
-//        loading: true,
-//        token: null,
-//      })
-//      const token = await stripe.paymentRequestWithAndroidPay({
-//        total_price: '100.00',
-//        currency_code: 'USD',
-//        line_items: [{
-//          currency_code: 'USD',
-//          description: 'Whisky',
-//          total_price: '50.00',
-//          unit_price: '50.00',
-//          quantity: '1',
-//        }, {
-//          currency_code: 'USD',
-//          description: 'Vine',
-//          total_price: '30.00',
-//          unit_price: '30.00',
-//          quantity: '1',
-//        }, {
-//          currency_code: 'USD',
-//          description: 'Tipsi',
-//          total_price: '20.00',
-//          unit_price: '20.00',
-//          quantity: '1',
-//        }],
-//      })
-//      console.log('Result:', token) // eslint-disable-line no-console
-//      this.setState({
-//        loading: false,
-//        token,
-//      })
-//    } catch (error) {
-//      console.log('Error:', error) // eslint-disable-line no-console
-//      this.setState({
-//        loading: false,
-//      })
-//    }
+  sendUserId = async () => {
+    console.log('sendUserId ' + this.state.user_id)
+  }
+
+  sendUserProperty = async () => {
+    console.log('sendUserProperty ' + this.state.property_value)
+  }
+
+  sendCustomEvent = async () => {
+    console.log('sendCustomEvent')
+    console.log(this.state)
+  }
+
+  handleChangeTextInUserId = (text) => {
+    console.log('handleChangeTextInUserId '+text)
+      this.setState({
+        user_id: text,
+      })
+  }
+
+  handleChangeTextInPropertyName = (text) => {
+    console.log('handleChangeTextInUserId '+text)
+      this.setState({
+        property_name: text,
+      })
+  }
+
+  handleChangeTextInPropertyValue = (text) => {
+    console.log('handleChangeTextInUserId '+text)
+      this.setState({
+        property_value: text,
+      })
   }
 
   render() {
-    const { loading, allowed, token } = this.state
 
     return (
       <View style={styles.container}>
-        <Text style={styles.header}>
-          Android Pay Example
-        </Text>
-        <Text style={styles.instruction}>
-          Click button to init crash.
-        </Text>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder = 'Edit your user id'
+            onChangeText={this.handleChangeTextInUserId}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
         <Button
-          onPress={this.handleCrashPress}
-          title="Crash"
+          style={styles.button}
+          onPress={this.sendUserId}
+          title="Send user id"
         />
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder = 'propertyName'
+            onChangeText={this.handleChangeTextInPropertyName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder = 'propertyValue'
+            onChangeText={this.handleChangeTextInPropertyValue}
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          onPress={this.sendUserProperty}
+          title="Send user property"
+        />
+        </View>
+        <View style={styles.buttonContainer}>
+        <Button
+          style={styles.button}
+          onPress={this.sendCustomEvent}
+          title="Send custom event"
+        />
+        </View>
       </View>
     )
   }
@@ -79,6 +99,7 @@ export default class AnalyticsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
@@ -94,10 +115,26 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   button: {
-    margin: 10,
-    borderWidth: 1,
+    marginBottom: 20,
   },
-  token: {
-    height: 20,
+  buttonContainer: {
+    marginBottom: 40
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 5,
+    marginBottom: 5,
+  },
+  input: {
+    height: 26,
+    borderWidth: 0.5,
+    borderColor: '#0f0f0f',
+    borderRadius: 5,
+    flex: 1,
+    fontSize: 13,
+    padding: 5,
+    margin: 5,
   },
 })

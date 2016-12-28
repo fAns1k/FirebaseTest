@@ -3,11 +3,6 @@ import { View, Text, StyleSheet, Button } from 'react-native'
 import FirebaseCrash from 'react-native-firebase-crash-report';
 
 export default class CrashScreen extends Component {
-  state = {
-    loading: true,
-    allowed: true,
-    token: null,
-  }
 
   handleCrashPress = () => {
        console.log('handleCrashPress')
